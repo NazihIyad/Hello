@@ -1,33 +1,11 @@
 #include <stdio.h>
+#define PRICE_COUNT_MAX 5
 
-int Control(int altitude) {
-    int thruster = 0;
-
-    if (altitude > 100) {
-        thruster = 0;
-    } else if (altitude > 0) { 
-        thruster = 1;
-    } else { 
-        thruster = 0;
-    }
-
-    return thruster;
-}
-
-void Test(int altitude) {
-    int thruster = Control(altitude);
-    int behaviorCorrect = (altitude > 100 && thruster == 0) ||
-                        (altitude <= 100 && altitude > 0 && thruster == 1) ||
-                        (altitude <= 0 && thruster == 0);
-    char *behaviorCorrectIcon = behaviorCorrect ? "✅" : "❌";
-    printf("For altitude %3d, your thruster is %d |%s|\n", altitude, thruster,
-        behaviorCorrectIcon);
-}
+int product_prices[PRICE_COUNT_MAX] = {13, 140, 900, 2, 0};
 
 int main(void) {
-    Test(150);
-    Test(100);
-    Test(50);
-    Test(0);
-    Test(-1);
+    for (int i = 0; i < PRICE_COUNT_MAX; ++i) {
+        printf("%d: %10d DKK\n", i, product_prices[i]);
+    }
+    return 0;
 }
